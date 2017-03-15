@@ -1,0 +1,12 @@
+import groovy.transform.Field
+import test.fetch.join.Author
+import test.fetch.join.Book
+
+@Field List<Book> books
+
+json(books) { Book book ->
+    id book.id
+    authors(book.authors) { Author author ->
+        name author.name
+    }
+}
